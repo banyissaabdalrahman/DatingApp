@@ -23,6 +23,7 @@ public class Startup
             options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
         });
         services.AddControllers();
+        services.AddCors();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -32,9 +33,17 @@ public class Startup
             app.UseDeveloperExceptionPage();
         }
 
-        // Configure middleware and routing here
-        app.UseRouting().UseEndpoints(endpoints => endpoints.MapControllers());
+        app.UseHttpsRedirection();
 
+        app.UseRouting();
 
+        app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+
+        app.UseAuthentication();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
     }
 }
