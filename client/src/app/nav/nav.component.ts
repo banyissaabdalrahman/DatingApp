@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../_services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -9,14 +10,14 @@ import { AccountService } from '../_services/account.service';
 export class NavComponent {
   model: any = {};
 
-  constructor(public accountService: AccountService) {}
+  constructor(public accountService: AccountService, private router: Router) {}
 
   ngOnInit() {}
 
   login() {
     this.accountService.login(this.model).subscribe(
       (response) => {
-        console.log(response);
+        this.router.navigateByUrl('/members');
       },
       (error) => {
         console.log(error);
@@ -26,5 +27,6 @@ export class NavComponent {
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 }
