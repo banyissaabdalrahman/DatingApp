@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../_services/account.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,11 @@ import { Router } from '@angular/router';
 export class NavComponent {
   model: any = {};
 
-  constructor(public accountService: AccountService, private router: Router) {}
+  constructor(
+    public accountService: AccountService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {}
 
@@ -21,6 +26,7 @@ export class NavComponent {
       },
       (error) => {
         console.log(error);
+        this.toastr.error(error.error);
       }
     );
   }

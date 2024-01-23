@@ -38,6 +38,9 @@ dependencies:
   ngx-bootstrap:
     specifier: ^11.0.2
     version: 11.0.2(@angular/animations@16.2.12)(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/forms@16.2.12)(rxjs@7.8.1)
+  ngx-toastr:
+    specifier: ^18.0.0
+    version: 18.0.0(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
@@ -5346,6 +5349,19 @@ packages:
       '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
       '@angular/forms': 16.2.12(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12)(rxjs@7.8.1)
       rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+
+  /ngx-toastr@18.0.0(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/platform-browser@16.2.12):
+    resolution: {integrity: sha512-jZ3rOG6kygl8ittY8OltIMSo47P1VStuS01igm3MZXK6InJwHVvxU7wDHI/HGMlXSyNvWncyOuFHnnMEAifsew==}
+    peerDependencies:
+      '@angular/common': '>=16.0.0-0'
+      '@angular/core': '>=16.0.0-0'
+      '@angular/platform-browser': '>=16.0.0-0'
+    dependencies:
+      '@angular/common': 16.2.12(@angular/core@16.2.12)(rxjs@7.8.1)
+      '@angular/core': 16.2.12(rxjs@7.8.1)(zone.js@0.13.3)
+      '@angular/platform-browser': 16.2.12(@angular/animations@16.2.12)(@angular/common@16.2.12)(@angular/core@16.2.12)
       tslib: 2.6.2
     dev: false
 
