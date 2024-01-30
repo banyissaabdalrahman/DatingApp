@@ -29,7 +29,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     modalStateError.push(error.error.errors[key]);
                   }
                 }
-                throw modalStateError;
+                throw modalStateError.flat();
               } else {
                 this.toastr.error('Bad Request', error.status);
               }
@@ -42,9 +42,13 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
             case 500:
               const navigationExtras: NavigationExtras = {
-                state: { error: error.err },
+                state: { error: error.error },
               };
-              this.router.navigateByUrl('/server-error');
+              this.router.navigateByUrl('/server-error', navigationExtras);
+              break;
+            default:
+              this.toastr.error('Something unexpected went wrong');
+              console.log(error);
               break;
           }
         }
