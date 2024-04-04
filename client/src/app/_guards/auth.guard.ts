@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) {}
 
-  canActivate(): Observable<boolean> | boolean {
+  canActivate(): Observable<boolean> {
     return this.accountService.currentUser$.pipe(
       map((user) => {
         if (user) return true;
