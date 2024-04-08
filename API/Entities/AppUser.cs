@@ -1,3 +1,5 @@
+using API.Extensions;
+
 namespace API.Entities
 {
     public class AppUser
@@ -16,6 +18,13 @@ namespace API.Entities
         public string Interests { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        // one to many relationship - one user can have many photos!
         public ICollection<Photo> Photos { get; set; }
+
+
+        public int GetAge()
+        {
+            return DateOfBirth.CalculateAge();
+        }
     }
 }
