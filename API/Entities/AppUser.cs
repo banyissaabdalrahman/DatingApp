@@ -1,6 +1,6 @@
 namespace API.Entities
 {
-    public partial class AppUser
+    public class AppUser
     {
         public int Id { get; set; }
         public string UserName { get; set; }
