@@ -21,10 +21,5 @@ namespace API.Entities
         // one to many relationship - one user can have many photos!
         public ICollection<Photo> Photos { get; set; }
 
-
-        public int GetAge()
-        {
-            return DateOfBirth.CalculateAge();
-        }
     }
 }
