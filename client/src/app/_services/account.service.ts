@@ -22,8 +22,7 @@ export class AccountService {
         (response: User) => {
           const user = response;
           if (user) {
-            localStorage.setItem('user', JSON.stringify(user));
-            this.currentUserSource.next(user);
+            this.setCurrentUser(user);
           }
         },
         (error) => {
@@ -38,8 +37,7 @@ export class AccountService {
       map(
         (user: User) => {
           if (user) {
-            localStorage.setItem('user', JSON.stringify(user));
-            this.currentUserSource.next(user);
+            this.setCurrentUser(user);
           }
         },
         (error) => {
@@ -49,12 +47,13 @@ export class AccountService {
     );
   }
 
-  setCurrentUser(user: User) {
-    this.currentUserSource.next(user);
-  }
-
   logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
+  }
+
+  setCurrentUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.currentUserSource.next(user);
   }
 }
